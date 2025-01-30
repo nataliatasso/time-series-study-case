@@ -35,11 +35,18 @@ The required data can be found in the following sources:
     python case_study.py
     ``` 
 
-# Conclusions
+# Análises (pt-br)
 
-O banco da SIDRA possui 378 observações e que o banco
-do IBGE possui 9009 observações. Não existem valores nulos em nenhuma das duas tabelas, o que é muito positivo. Algumas varáveis de interesse não estão com o Dtype ideal, mas sua conversão será feita após a união das tabelas.
-Começaremos a tratar os dados da tabela do IBGE e depois da SIDRA.
+Ao importarmos os dados da SIDRA, verificamos que o banco de dados contém 378 observações, enquanto o do IBGE possui 9.009 observações. Observamos também que não há valores nulos em nenhuma das duas tabelas, o que dispensa a necessidade de tratamentos relacionados a esses dados. Contudo, algumas variáveis de interesse não estavam no formato (Dtype) desejado, e sua conversão será realizada durante a etapa de limpeza e junção das tabelas. Os dados estavam dispostos por faixas etárias simples, o que permitiu calcular diretamente a população na faixa etária de 38 a 58 anos.
 
-Os dados estavam disponíveis por idade simples, o que permitiu calcular diretamente a população na faixa etária de 38 a 58 anos.
-Portanto, não foi necessário utilizar métodos de interpolação, pois os dados já estavam no formato ideal para a análise.
+Portanto, não foi necessário aplicar métodos de interpolação, uma vez que os dados já estavam no formato adequado para análise. Assim, as tabelas do IBGE e da SIDRA foram tratadas e unificadas conforme as variáveis de interesse.
+
+Em seguida, como nossa variável de agrupamento possui 27 categorias (representando os 27 estados), optamos por criar um gráfico para cada estado, com o objetivo de observar o comportamento individual de cada um, o que melhora a clareza da análise. Um ponto interessante observado foi que quase todos os estados apresentaram uma queda abrupta em 2014. Diversos fatores podem ter influenciado esse comportamento, incluindo a crise econômica daquele ano, que resultou em retração do PIB, aumento do desemprego e elevação da inflação, impactando negativamente o poder de compra da população, especialmente entre os consumidores da faixa etária analisada.
+
+Fonte: [G1 - O auge e queda do mercado imobiliário em uma década](https://g1.globo.com/especial-publicitario/zap/imoveis/noticia/2016/04/o-auge-e-queda-do-mercado-imobiliario-em-uma-decada.html?utm_source=chatgpt.com)
+
+Prosseguimos com as análises por meio da decomposição sazonal, a fim de separar a série temporal em componentes de tendência e resíduo. Como os dados são anuais, a sazonalidade não se aplica, mas a análise da tendência e dos resíduos é essencial para entender o comportamento da variável "RAZAO".
+
+Conforme ilustrado nos gráficos de tendência, a razão apresentou considerável variabilidade entre 2007 e 2020, o que indicou que o modelo de previsão acomodou um erro significativo. Esse tipo de variação é comum em modelos de séries temporais, especialmente quando os dados flutuam consideravelmente, refletindo a influência de mudanças no contexto político e econômico.
+
+Finalmente, investigamos como os estados se agrupam, com o intuito de identificar os mais saturados e os que apresentam maior potencial. A clusterização por K-Means foi utilizada para agrupar os estados com base na média da "RAZAO" prevista. No gráfico, os estados destacados em vermelho representam os mais saturados, enquanto os estados em azul indicam os menos saturados, com destaque para Santa Catarina, Rio Grande do Sul e Paraná. Os estados em verde refletem uma condição intermediária, com níveis moderados de saturação.
