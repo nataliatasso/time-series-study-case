@@ -16,6 +16,7 @@ jaraco.classes==3.4.0
 jaraco.context==6.0.1
 jaraco.functools==4.1.0
 joblib==1.4.2
+kaleido==0.2.1
 keyring==25.6.0
 kiwisolver==1.4.8
 markdown-it-py==3.0.0

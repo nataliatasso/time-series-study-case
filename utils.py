@@ -22,7 +22,6 @@ def get_sidra_dados():
     except requests.exceptions.RequestException as e:
         raise Exception(f"Erro ao acessar a API do SIDRA: {e}")
 
-
 def checkData(data, name):
     if data.isnull().values.any():
         print(f'O DataFrame {name} contém valores nulos.')
@@ -136,7 +135,7 @@ def cleanData(df_sidra_bruto, df_populacao_bruto, estados):
 
     return df_final
 
-def runAnalysis1(data):
+def runDescriptiveAnalysis(data):
     # Gráfico interativo para ver o comportamento geral dos dados
     fig = px.line(
         data,
@@ -156,9 +155,10 @@ def runAnalysis1(data):
         hovermode='closest'
     )
 
-    fig.show()
+    fig.write_image("output/descriptiveAnalysis.png")
+#   fig.show()
 
-def runAnalysByState(data):
+def runDescriptiveAnalysisByState(data):
     # Usar a coluna 'LOCAL' para identificar os estados
     estados = data['LOCAL'].unique()
 
@@ -176,7 +176,8 @@ def runAnalysByState(data):
 
     # Ajustar o layout para evitar sobreposição
     plt.tight_layout()
-    plt.show()
+    plt.savefig("output/descriptiveAnalysisByState.png")
+    #plt.show()
 
 def runSazonalDecomposedByState(data):
     # Usando a coluna 'LOCAL' para identificar os estados
@@ -206,7 +207,7 @@ def runSazonalDecomposedByState(data):
         plt.tight_layout()
 
         # Salvar a figura em um arquivo (opcional)
-        plt.savefig(f'decomposicao_{estado}.png')
+        plt.savefig(f'output/decomposicao/decomposicao_{estado}.png')
 
         # Mostrar a figura
         #plt.show()
@@ -251,7 +252,8 @@ def runPrevisions(data, estados):
         plt.title(f'Previsão para {estado} (2021-2022)')
         plt.xlabel('Ano')
         plt.ylabel('RAZAO')
-        plt.show()
+        #plt.show()
+        plt.savefig(f'output/previsao/previsao_{estado}.png')
 
     # Exibir as previsões
     for estado, dados in previsoes_prophet.items():
@@ -315,4 +317,5 @@ def createClusterAnalysis(df_previsoes):
     )
 
     # Mostrar o gráfico
-    fig.show()
+    #fig.show()
+    fig.write_image("output/cluster.png")

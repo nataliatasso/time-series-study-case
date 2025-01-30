@@ -1,17 +1,17 @@
 import requests
 import pandas as pd
 
-from utils import get_sidra_dados, checkData, cleanData, runAnalysis1, runAnalysByState, runSazonalDecomposedByState, runPrevisions, createClusterAnalysis
+from utils import get_sidra_dados, checkData, cleanData, runDescriptiveAnalysis, runDescriptiveAnalysisByState, runSazonalDecomposedByState, runPrevisions, createClusterAnalysis
 
-# ESTADOS = [
-#         'Rondônia', 'Acre', 'Amazonas', 'Roraima', 'Pará', 'Amapá', 'Tocantins',
-#         'Maranhão', 'Piauí', 'Ceará', 'Rio Grande do Norte', 'Paraíba',
-#         'Pernambuco', 'Alagoas', 'Sergipe', 'Bahia', 'Minas Gerais',
-#         'Espírito Santo', 'Rio de Janeiro', 'São Paulo', 'Paraná',
-#         'Santa Catarina', 'Rio Grande do Sul', 'Mato Grosso do Sul',
-#         'Mato Grosso', 'Goiás', 'Distrito Federal'
-#     ]
-ESTADOS = ['Rondônia','Acre', 'Amazonas']
+ESTADOS = [
+        'Rondônia', 'Acre', 'Amazonas', 'Roraima', 'Pará', 'Amapá', 'Tocantins',
+        'Maranhão', 'Piauí', 'Ceará', 'Rio Grande do Norte', 'Paraíba',
+        'Pernambuco', 'Alagoas', 'Sergipe', 'Bahia', 'Minas Gerais',
+        'Espírito Santo', 'Rio de Janeiro', 'São Paulo', 'Paraná',
+        'Santa Catarina', 'Rio Grande do Sul', 'Mato Grosso do Sul',
+        'Mato Grosso', 'Goiás', 'Distrito Federal'
+    ]
+
 print("Lendo as bases de dados")
 # Buscar dados e transformar em DataFrame
 dados = get_sidra_dados()
@@ -36,8 +36,8 @@ print("Após tratar e unir as tabelas. Temos o seguinte DataFrame:")
 print(df_final.head())
 
 print("Iniciando análise")
-runAnalysis1(df_final)
-runAnalysByState(df_final)
+runDescriptiveAnalysis(df_final)
+runDescriptiveAnalysisByState(df_final)
 runSazonalDecomposedByState(df_final)
 df_previsoes = runPrevisions(df_final, ESTADOS)
 createClusterAnalysis(df_previsoes)
