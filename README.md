@@ -6,6 +6,13 @@ According to SCOD Brazil, when analyzing the profile of real estate market consu
 
 Use data from 2007 to 2020 to estimate values for 2021 and 2022. Additionally, group the time series to identify which states exhibited similar trends. We are interested in determining which states are more saturated and which present greater future opportunities.
 
+### Data sources
+
+The required data can be found in the following sources:
+
+1. Business Data: Available in SIDRA's "Table 1757 - General data of construction companies, according to employment size categories".
+    - API Documentation: [SIDRA API](https://sidra.ibge.gov.br/Tabela/1757)
+
 ## How to run the project
 
 1. Clone the repository:
@@ -13,3 +20,14 @@ Use data from 2007 to 2020 to estimate values for 2021 and 2022. Additionally, g
    git clone https://github.com/nataliatasso/time-series-study-case.git
    cd time-series-study-case
    ```
+
+2. Make sure you have Python installed.
+3. All the dependencies are listed on [requirements.txt](requirements.txt). They can be installed using:
+    ```sh
+    pip install -r requirements.txt
+    ``` 
+
+4. Run the main script:
+    ```sh
+    python case_study.py
+    ``` 
