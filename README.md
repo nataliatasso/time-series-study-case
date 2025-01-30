@@ -34,3 +34,12 @@ The required data can be found in the following sources:
     ```sh
     python case_study.py
     ``` 
+
+# Conclusions
+
+O banco da SIDRA possui 378 observações e que o banco
+do IBGE possui 9009 observações. Não existem valores nulos em nenhuma das duas tabelas, o que é muito positivo. Algumas varáveis de interesse não estão com o Dtype ideal, mas sua conversão será feita após a união das tabelas.
+Começaremos a tratar os dados da tabela do IBGE e depois da SIDRA.
+
+Os dados estavam disponíveis por idade simples, o que permitiu calcular diretamente a população na faixa etária de 38 a 58 anos.
+Portanto, não foi necessário utilizar métodos de interpolação, pois os dados já estavam no formato ideal para a análise.

@@ -15,3 +15,10 @@ def get_sidra_dados():
         return data
     except requests.exceptions.RequestException as e:
         raise Exception(f"Erro ao acessar a API do SIDRA: {e}")
+
+
+def checkData(data, name):
+    if data.isnull().values.any():
+        print(f'O DataFrame {name} contém valores nulos.')
+    else:
+        print(f'O DataFrame {name} não contém valores nulos.')
